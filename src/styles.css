@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Outfit", system-ui, sans-serif;
+
+  --color-ink: #14110e;
+  --color-cream: #f3eadf;
+  --color-muted: #a89886;
+  --color-amber: #e4a15a;
+  --color-line: #3c342c;
+
+  --color-panel: color-mix(in oklab, var(--color-cream) 7%, var(--color-ink));
+  --color-stage: color-mix(in oklab, var(--color-cream) 12%, var(--color-ink));
+  --color-amber-ink: #3a250f;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--color-ink);
+    color: var(--color-cream);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+    font-weight: 520;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-amber);
+    outline-offset: 2px;
+  }
+}
+
+@keyframes et-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.65rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes et-wipe {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes et-words {
+  from {
+    opacity: 0;
+    transform: translateY(0.4rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.et-rise {
+  animation: et-rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.et-wipe {
+  transform-origin: left center;
+  animation: et-wipe 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.et-word {
+  display: inline-block;
+  margin-right: 0.25em;
+  animation: et-words 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.et-kicker {
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.et-card {
+  box-shadow: 0 16px 40px color-mix(in oklab, var(--color-ink) 18%, transparent);
+}
+
+.et-mark-line {
+  position: absolute;
+  left: 8%;
+  top: 18%;
+  height: 1px;
+  width: 28%;
+  background: currentColor;
+}
+
+.et-mark-ring {
+  position: absolute;
+  right: 10%;
+  top: 22%;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  opacity: 0.3;
+}
+
+.et-mark-ring-lg {
+  position: absolute;
+  bottom: 28%;
+  left: 12%;
+  height: 6rem;
+  width: 6rem;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  opacity: 0.2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .et-rise,
+  .et-wipe,
+  .et-word {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
